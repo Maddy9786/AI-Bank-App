@@ -1,0 +1,31 @@
+#Build Stage
+
+FROM eclipse-temurin:21-jdk-jammy AS build
+
+WORKDIR /app
+
+COPY . . 
+
+#Here Jar file will be craeted by maven and it will store at /app/target/
+
+RUN chmod +x mvnw && ./mvnw clean package -DskipTests -B
+
+RUN ls -la 
+
+
+
+#Deploy stage
+
+FROM eclipse-temurin:21-jdk-jammy AS deploy
+
+WORKDIR /app
+
+#Here all created jar file from maven in build stage docker will create to app.jar
+
+COPY --from=build /app/target/*.jar app.jar	
+
+RUN ls -la 
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
