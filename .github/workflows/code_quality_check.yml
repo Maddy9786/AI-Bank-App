@@ -24,7 +24,7 @@ jobs:
       - name: Build and Sonar Scan
         run: |
           mvn clean verify sonar:sonar \
-            -Dsonar.projectKey=maddy9786_AI-Bank-App \
-            -Dsonar.organization=maddy9786 \
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY}} \
+            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }} \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
