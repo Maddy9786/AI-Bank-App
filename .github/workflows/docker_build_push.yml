@@ -26,5 +26,5 @@ jobs:
                 context: .
                 push: true  
                 tags: |
-                 ${{ vars.DOCKER_USERNAME}}/AI_Bank_app:${{ github.sha}}
-                 ${{ vars.DOCKER_USERNAME}}/AI_Bank_app:V1
+                 ${{ vars.DOCKER_USERNAME}}/ai_bank_app:${{ github.sha}}
+                 ${{ vars.DOCKER_USERNAME}}/ai_bank_app:V1
