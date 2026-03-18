@@ -1,0 +1,29 @@
+name: docker build and push
+
+on:
+    workflow_call:
+
+jobs:
+    
+    docker_build_push:
+        runs-on: ubuntu-latest
+
+        steps:
+
+            - name: code checkout
+              uses: actions/checkout@v4
+
+            - name: docker Hub login
+              uses: docker/login-action@v2
+              with:
+                username: ${{ vars.DOCKER_USERNAME }}
+                password: ${{ secrets.DOCKER_TOKEN }}
+
+            - name : docker build and push
+              uses: docker/build-push-action@v6
+              with:
+                context: .
+                push: true  
+                tags: |
+                 ${{ vars.DOCKER_USERNAME}}/AI_Bank_app:${{ github.sha}}
+                 ${{ vars.DOCKER_USERNAME}}/AI_Bank_app:V1
