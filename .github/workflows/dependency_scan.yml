@@ -11,11 +11,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '21'
+     # - name: Set up Java
+      #  uses: actions/setup-java@v4
+      #  with:
+       #   distribution: 'temurin'
+       #   java-version: '21'
 
       - name: Run OWASP Dependency Check
         uses: dependency-check/Dependency-Check_Action@main
@@ -23,6 +23,7 @@ jobs:
           project: "bankapp"
           path: "."
           format: "HTML"
+          
 
       - name: Upload Report
         uses: actions/upload-artifact@v4
