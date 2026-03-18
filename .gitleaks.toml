@@ -5,3 +5,6 @@ id = "ignore-sonar-project-key"
 description = "Ignore Sonar project key"
 regex = '''sonar.projectKey'''
 tags = ["false-positive"]
+
+[allowlist]
+regexes = ['''sonar.projectKey''']
