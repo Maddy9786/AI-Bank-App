@@ -1,8 +1,6 @@
 name: devsecops pipeline
 on: 
-   workflow_call: 
-  #push:
-    #branches: [main]
+   workflow_dispatch: 
 
 jobs:
     #CI
@@ -14,7 +12,7 @@ jobs:
     dependency_scan:
          uses: ./.github/workflows/dependency_scan.yml  
     docker_file_scan:
-         uses: ./.github/workflows/docker_file_scanner.yml 
+         uses: ./.github/workflows/docker_file_scan.yml 
     build:
          needs: [code-quality_scan,secrets_scan,dependency_scan,docker_file_scan] 
          uses: ./.github/workflows/docker_build_push.yml
