@@ -129,3 +129,27 @@ src/main/resources/
 | `main`   | Full DevOps pipeline (CI/CD, K8s, etc.)               |
 
 Each branch builds on the previous one. See `ROADMAP.md` for the full checklist.
+
+
+### CICD:
+
+✅ Code Quality Check
+
+→ Check code issues, bugs, smells
+👉 Tool: SonarCloud (best for Spring Boot)
+
+✅ Dependency Check
+
+→ Check vulnerable libraries
+👉 Tool: OWASP Dependency Check
+
+
+Developer writes code
+        ↓
+flake8 (style check)
+        ↓
+bandit (security check)
+        ↓
+Sonar (full analysis + dashboard)
+        ↓
+Build & Deploy
