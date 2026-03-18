@@ -31,8 +31,6 @@
 		<sonar.projectKey>maddy9786_AI-Bank-App</sonar.projectKey>
         <sonar.organization>maddy9786</sonar.organization>
 	</properties>
-    
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
