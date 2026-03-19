@@ -24,7 +24,7 @@ jobs:
                   echo "Successfully logged in"
                   sudo apt-get update && sudo apt install docker.io docker-compose-v2 -y
                   sudo usermod -aG docker $USER && newgrp docker
-                  mkdir -p AI_Bank_App_Deployment
+                  mkdir -p ai_bank_app_dep
    
             - name: Copy files via SSH
               uses: appleboy/scp-action@v1
@@ -33,7 +33,7 @@ jobs:
                  username: ${{ secrets.EC2_USERNAME }}
                  key: ${{ secrets.EC2_KEY }}
                  source: "docker-compose.yaml"
-                 target: ~/AI_Bank_App_Deployment/  
+                 target: ~/ai_bank_app_dep/  
 
             - name: deploying the app
               uses: appleboy/ssh-action@v1
@@ -45,4 +45,4 @@ jobs:
                   export DOCKER_USERNAME=${{ vars.DOCKER_USERNAME }}
                   export DOCKER_TAG=${{ github.sha }}
                   echo ${{secrets.DOCKER_TOKEN}} | docker login --username ${{vars.DOCKER_USERNAME}} --password-stdin
-                  cd ~/AI_Bank_App_Deployment && docker compose down && docker compose up -d --build --force-recreate --pull always
+                  cd ~/ai_bank_app_dep && docker compose down && docker compose up -d --build --force-recreate --pull always
