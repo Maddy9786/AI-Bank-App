@@ -9,7 +9,7 @@ jobs:
     deploy_build:
         runs-on: ubuntu-latest
         env:
-            DOCKER_USERNAME: ${{vars.DOCKER_USERNAME}}
+            DOCKER_USERNAME: ${{ vars.DOCKER_USERNAME }}
             DOCKER_TAG: ${{github.sha}}
         steps:
             - name: Checkout code

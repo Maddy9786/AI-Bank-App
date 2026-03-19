@@ -6,6 +6,7 @@ jobs:
     #CI
     code-quality_scan:
         uses: ./.github/workflows/code_quality_check.yml
+        secrets: inherit
     secrets_scan:
         uses: ./.github/workflows/secret_scan.yml  
         secrets: inherit
