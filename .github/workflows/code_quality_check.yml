@@ -2,6 +2,13 @@ name: Code Quality Check
 
 on:
    workflow_call:
+    inputs:
+       SONAR_PROJECT_KEY:
+         required: true
+         type: string
+       SONAR_ORGANIZATION:
+         required: true
+         type: string                                                                    
    #workflow_dispatch:
 jobs:
   sonarcloud:
@@ -24,7 +31,7 @@ jobs:
       - name: Build and Sonar Scan
         run: |
           mvn clean verify sonar:sonar \
-            -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY }} \
-            -Dsonar.organization=${{ vars.SONAR_ORGANIZATION }} \
+            -Dsonar.projectKey=${{ inputs.SONAR_PROJECT_KEY }} \
+            -Dsonar.organization=${{ inputs.SONAR_ORGANIZATION }} \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
