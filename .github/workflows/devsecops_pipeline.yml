@@ -7,6 +7,9 @@ jobs:
     code-quality_scan:
         uses: ./.github/workflows/code_quality_check.yml
         secrets: inherit
+        with :
+                SONAR_PROJECT_KEY: ${{ vars.SONAR_PROJECT_KEY }}
+                SONAR_ORGANIZATION: ${{ vars.SONAR_ORGANIZATION }}
     secrets_scan:
         uses: ./.github/workflows/secret_scan.yml  
         secrets: inherit
