@@ -20,7 +20,7 @@ services:
 
 
     bankapp:
-      image: ${DOCKER_USERNAME}/AI_Bank_app:${DOCKER_TAG}
+      image: ${DOCKER_USERNAME}/ai_bank_app:${DOCKER_TAG}
       container_name: bankappbk
       ports:
         - "8081:8080"
